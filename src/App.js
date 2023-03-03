@@ -1,7 +1,8 @@
 // import React from "react";
 import { React, useState } from "react";
 import EnrollmentForm from './components/EnrollmentForm'
-// import AppDropDown from './components/AppDropDown'
+import EnrolList from './components/EnrolList'
+
 
 
 // EnrollmentForm이라는 폼을 return 하도록
@@ -34,6 +35,7 @@ const App = () => {
             </div>
             <EnrollmentForm chosenProgram={program}
                 currentSeat={(program === "대학생") ? ugseats : pgseats} setUpdateSeats={setUpdateSeats}/>
+            <EnrolList />
         </div>
     )
 }
