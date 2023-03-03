@@ -9,19 +9,26 @@ import EnrollmentForm from './components/EnrollmentForm'
 const App = () => {
 
     const [ program, setProgram ] = useState("대학생");  // 프로그램 종류
-    const [ seats, setSeats ] = useState(100);  // 참가가능 인원수
+    const [ugseats,setUgseats] = useState(60);
+    const [pgseats,setPgseats] = useState(40);
     const handleChange = (e) => {
         setProgram(e.target.value);
         e.preventDefault();
     };
 
+    // 프로그램별 참가가능 인원수를 변경하는 함수
     const setUpdateSeats = (modify) => {
-        setSeats(modify)
+        if (program === "대학생") {setUgseats(modify)}
+        if (program === "대학원생") {setPgseats(modify)}
     };
     return(
         <div className="App">
             <div  className="programs">
-                <label>프로그램 참가 신청 인원수 : {seats}</label>
+                <label>학사과정 프로그램 참가 신청 인원수 : {ugseats}</label>
+                <br />
+                <br />
+                <label>석사과정 프로그램 참가 신청 인원수 : {pgseats}</label>
+                <br />
                 <br />
                 <br />
                 <label>프로그램 종류 : </label>
@@ -30,9 +37,10 @@ const App = () => {
                     <option value="대학생">학사과정(대학생)</option>
                     <option value="대학원생">석사과정(대학원생)</option>
                 </select>
+                <br /><br />
             </div>
             <EnrollmentForm chosenProgram={program}
-                currentSeat={seats} setUpdateSeats={setUpdateSeats}/>
+                currentSeat={(program === "대학생") ? ugseats : pgseats} setUpdateSeats={setUpdateSeats}/>
         </div>
     )
 }
