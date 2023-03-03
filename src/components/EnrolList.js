@@ -1,6 +1,6 @@
-import React from "react";
+import { React, useEffect } from "react";
 import '../EnrolList.css';
-import {DetailsList} from '@fluentui/react/lib/DetailsList'
+import {DetailsList} from '@fluentui/react/lib/DetailsList';
 
 // 과정 등록 학생 리스트 컬럼 정의
 const columns = [{
@@ -18,13 +18,24 @@ const columns = [{
 ]
 
 // 테스트용 데이터 삽입 - 컬럼 정의시 사용했던 fieldName으로 값 초기화
+// -> for문을 사용해서 직접적으로 정보를 넣어서 확인하는용도 후 for문 삭제
 let items = [];
-for (let i = 1; i < 6; ++i){
-    let data = {key: i ,fname: 'FirstName' + i , lname: 'LastName' + i , program : 'UG', email : 'Email' + i };
-    items.push(data);
-}
 
-const EnrolList = () => {
+
+const EnrolList = (props) => {
+    // 과정 등록 학생 데이터가 추가될때 마다 UI를 재렌더링하기 위해
+    // useEffect 리액트 훅 사용
+    // useEffect : 컴퍼넌트 생명주기에 따라 dom 랜더링 처리
+    // props 객체에 값이 존재할 때 마다 detailsList에 렌더링해서 화면에 표시
+    useEffect(() => {
+        const curItemkey = props.studentDetails.key;
+        if (curItemkey) {
+            items = [ ...items,props.studentDetails ];
+            props.setStudentDetails({});
+        }
+    },[props]);
+
+
     return (
         <div className="enrolList">
             <DetailsList items={items} columns={columns} />
