@@ -16,7 +16,7 @@ const EnrollmentForm = (props) => {
     // '등록하기' 버튼 클릭시 이름/성을 환영메세지로 만들어
     // 폼 아래쪽에 나타냄
     const handleSubmit = (e) => {
-       let msg = `환영합니다, ${lastName} ${firstName}님 !!\n ${email}로 등록관련 정보를 발송해드렸습니다`
+       let msg = `환영합니다, ${lastName} ${firstName}님 !!\n`+`${email}로 등록관련 정보를 발송해드렸습니다`
             //굳이 return 할 필요가 없다 바로 작성하게끔
         if (props.currentSeat > 0) {props.setUpdateSeats(props.currentSeat - 1);   // 참여가능 인원수 감소
         const rndKey = Math.floor(1000+Math.random()*9000);  // 등록완료된 학생정보에 사용할 key 생성

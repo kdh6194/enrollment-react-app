@@ -89,7 +89,8 @@
     font-family: inherit;
     font-size: 30px;
     font-style: italic;
-    width : 500px
+    width : 500px;
+    white-space:pre-line;
 }
 .actionIcon {
     font-size: 16px;
