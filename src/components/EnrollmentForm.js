@@ -15,7 +15,11 @@ const EnrollmentForm = (props) => {
     const handleSubmit = (e) => {
          setWelcomeMessage(`환영합니다, ${lastName} ${firstName}님 !!`)
             //굳이 return 할 필요가 없다 바로 작성하게끔
+        props.setUpdateSeats(props.currentSeat - 1);  // 참여가능 인워수 감소
+        //props로 전달받은 함수 setUpdateSeats를 이용해서
+        // 상위 컴퍼넌트의 seats 변수값을 조작함
         e.preventDefault(); // submit 기능 전파 중지  -> 요거 없으면 계속 submit 실행
+
     };
     return (
         <div>

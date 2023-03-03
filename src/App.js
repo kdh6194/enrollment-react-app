@@ -8,15 +8,22 @@ import EnrollmentForm from './components/EnrollmentForm'
 // 정의된 App 컴퍼넌트
 const App = () => {
 
-    const [ program, setProgram ] = useState("대학생")
+    const [ program, setProgram ] = useState("대학생");  // 프로그램 종류
+    const [ seats, setSeats ] = useState(100);  // 참가가능 인원수
     const handleChange = (e) => {
-        setProgram(e.target.value)
+        setProgram(e.target.value);
         e.preventDefault();
     };
 
+    const setUpdateSeats = (modify) => {
+        setSeats(modify)
+    };
     return(
         <div className="App">
             <div  className="programs">
+                <label>프로그램 참가 신청 인원수 : {seats}</label>
+                <br />
+                <br />
                 <label>프로그램 종류 : </label>
                 <select  className="appDropDowns"
                          onChange={handleChange} value={program}>
@@ -24,7 +31,8 @@ const App = () => {
                     <option value="대학원생">석사과정(대학원생)</option>
                 </select>
             </div>
-            <EnrollmentForm chosenProgram={program} />
+            <EnrollmentForm chosenProgram={program}
+                currentSeat={seats} setUpdateSeats={setUpdateSeats}/>
         </div>
     )
 }
