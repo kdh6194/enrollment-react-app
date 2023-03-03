@@ -52,3 +52,11 @@
     font-size: inherit;
     margin-left: 10px;
 }
+
+.redOne
+{
+    color:red;
+    font-family: inherit;
+    font-size: 30px;
+    font-style: italic;
+}
