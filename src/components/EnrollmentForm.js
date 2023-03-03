@@ -2,7 +2,7 @@ import React from "react";
 import {useState} from "react";
 import '../App.css'
 
-const EnrollmentForm = () => {
+const EnrollmentForm = (props) => {
     // 폼에 입력한 이름/성을 기억하기 위해 state형 변수 선언
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -20,7 +20,7 @@ const EnrollmentForm = () => {
     return (
         <div>
             <form className='enrolForm' onSubmit={handleSubmit}>
-            <h1>대학생 등록 양식</h1>
+            <h1>{props.chosenProgram} 등록 양식</h1>
             <div><label>First Name</label>
                 {/* onBlur 이벤트 발생시 입력한 이름/성은 firstName, lastName 변수에 저장*/}
                 <input type="text" name="fname"
