@@ -13,7 +13,6 @@ const App = () => {
     const [pgseats,setPgseats] = useState(40);
     const handleChange = (e) => {
         setProgram(e.target.value);
-        e.preventDefault();
     };
 
     // 프로그램별 참가가능 인원수를 변경하는 함수
@@ -24,20 +23,14 @@ const App = () => {
     return(
         <div className="App">
             <div  className="programs">
-                <label>학사과정 프로그램 참가 신청 인원수 : {ugseats}</label>
-                <br />
-                <br />
-                <label>석사과정 프로그램 참가 신청 인원수 : {pgseats}</label>
-                <br />
-                <br />
-                <br />
-                <label>프로그램 종류 : </label>
-                <select  className="appDropDowns"
-                         onChange={handleChange} value={program}>
-                    <option value="대학생">학사과정(대학생)</option>
-                    <option value="대학원생">석사과정(대학원생)</option>
-                </select>
-                <br /><br />
+                <h3 className="title"> 프로그램 등록양식 </h3>
+                <ul className="ulEnrol">
+                    <li onChange={handleChange} className="parentLabels">
+                        <input type="radio" name="programGroup" value="대학생" defaultChecked />학사과정     {/* input 처럼 혼자오는 태그는 뒤에 /가 필요하다*/}
+                        <input type="radio" name="programGroup" value="대학원생" />석사과정
+                    </li>
+                    <li>{program}참가 가능 인원 : {(program === "대학생") ? ugseats : pgseats}</li>
+                </ul>
             </div>
             <EnrollmentForm chosenProgram={program}
                 currentSeat={(program === "대학생") ? ugseats : pgseats} setUpdateSeats={setUpdateSeats}/>
