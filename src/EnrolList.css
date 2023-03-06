@@ -2,9 +2,9 @@
 {
     position: absolute;
     top: 920px;
-    left: 52%;
+    left: 51%;
     transform: translate(-50%, -50%);
-    width: 500px;
+    width: 600px;
     height: 100px;
     text-align: center;
     display: flex;

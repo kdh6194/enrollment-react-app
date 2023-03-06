@@ -1,5 +1,6 @@
 import React from "react";
 import {useState} from "react";
+import {MdEdit, MdDelete} from 'react-icons/md'
 import '../App.css'
 
 const EnrollmentForm = (props) => {
@@ -20,7 +21,7 @@ const EnrollmentForm = (props) => {
             //굳이 return 할 필요가 없다 바로 작성하게끔
         if (props.currentSeat > 0) {props.setUpdateSeats(props.currentSeat - 1);   // 참여가능 인원수 감소
         const rndKey = Math.floor(1000+Math.random()*9000);  // 등록완료된 학생정보에 사용할 key 생성
-            let stud = {key:rndKey, fname:firstName, lname:lastName, program:props.chosenProgram,email:email }
+            let stud = {key:rndKey, fname:firstName, lname:lastName, program:props.chosenProgram, email:email, edit:<MdEdit className="actionIcon" />, delete:<MdDelete className="actionIcon" /> }
             props.setStudentDetails(stud) //생성한 key와 등록완료된 학생정보를 props에 저장
         }
         else { msg = '더 이상 신청 하실 수 없습니다.'

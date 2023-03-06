@@ -2,8 +2,12 @@ import { React, useEffect } from "react";
 import '../EnrolList.css';
 import {DetailsList} from '@fluentui/react/lib/DetailsList';
 
+// 현재 컬럼 앞뒤로 수정, 삭제 버튼 추가
 // 과정 등록 학생 리스트 컬럼 정의
-const columns = [{
+const columns = [
+    {   key : 'edit' , name : '수정' , fieldName : 'edit', minWidth: 50, isResizable: false
+    },
+    {
         key : 'fname' , name : 'First Name' , fieldName : 'fname', minWidth: 90, isResizable: false
     },
     {
@@ -14,6 +18,8 @@ const columns = [{
     },
     {
         key : 'email' , name : '이메일' , fieldName : 'email', minWidth: 90, isResizable: false
+    },
+    {   key : 'delete' , name : '삭제' , fieldName : 'delete', minWidth: 50, isResizable: false
     }
 ]
 
