@@ -39,6 +39,14 @@ const EnrolList = (props) => {
             items = [ ...items,props.studentDetails ];
             props.setStudentDetails({});
         }
+        // 삭제 기능 수행
+        const action = props.action
+        if (action === 'delete') {
+            // 삭제 대상 아이템을 키로 가져옴
+            const deleteItem = items.filter( (item) => item.key === props.selectedItemKey )[0] // [0]이라고 써야 제대로 값을 가져온다
+            // 삭제 대상 아이템만 제외하고 다시 items 객체 생성  => 정확하게는 삭제하는것이 아닌 해당 값만 제외하고 다시 작성
+            items = items.filter( (item) => item !== deleteItem )
+        }// 삭제는 하지만 업데이트가 너무 느리다 -> 새로운 등록되야만 업데이트를 하고있으니
     },[props]);
 
 
